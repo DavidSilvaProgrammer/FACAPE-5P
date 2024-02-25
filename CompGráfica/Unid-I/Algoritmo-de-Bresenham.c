@@ -1,3 +1,8 @@
+/*
+Biblioteca gráfica SDL para visualização. 
+Certifique-se de instalar e configurar o SDL antes de executar o código.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <SDL2/SDL.h>
