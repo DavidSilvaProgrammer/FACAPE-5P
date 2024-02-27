@@ -1,0 +1,27 @@
+O erro que você está enfrentando é comum e ocorre quando você tenta declarar uma variável dentro do cabeçalho de um loop for em C. Vou explicar o motivo e como corrigi-lo.
+
+    Erro:
+        A mensagem de erro diz: 'for' loop initial declarations are only allowed in C99 or C11 mode.
+        Isso significa que a declaração de variáveis dentro do cabeçalho do loop for só é permitida nas versões mais recentes do padrão C (C99 ou C11).
+
+    Causa:
+        Nas versões anteriores do padrão C (como o C89), não era permitido declarar variáveis dentro do cabeçalho do loop for.
+        A partir do padrão C99, essa funcionalidade foi introduzida, permitindo que você declare variáveis diretamente no cabeçalho do loop for.
+
+    Solução:
+        Existem duas maneiras de resolver esse problema:
+            Declare a variável fora do loop:
+
+            int i; // Declare a variável aqui
+            for (i = 0; i < LINHAS; i++) {
+                // Resto do código
+            }
+
+            Compile com o padrão C99:
+                Adicione a opção -std=c99 ao seu comando de compilação para informar explicitamente ao compilador que você está usando o padrão C99:
+
+                gcc seu_programa.c -o seu_programa -std=c99
+
+                Isso permitirá que você declare variáveis dentro do cabeçalho do loop for.
+
+Escolha a abordagem que melhor se adequa ao seu código e ambiente de compilação.
