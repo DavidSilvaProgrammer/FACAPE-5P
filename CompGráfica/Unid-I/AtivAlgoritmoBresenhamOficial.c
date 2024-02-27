@@ -54,15 +54,32 @@ void bresenham(int x0, int y0, int x1, int y1, int matriz[LINHAS][COLUNAS]) {
     //Loop while  continua enquanto as coordenadas atuais (x0, y0) não coincidirem com as coordenadas do ponto final (x1, y1).
     
     while (x0 != x1 || y0 != y1) {
+        /*O primeiro if verifica se as coordenadas atuais 
+        (x0, y0) estão dentro dos limites da matriz.
+        Se estiverem, o pixel correspondente na matriz é definido como parte da linha, ou seja, atribuído o valor 1.
+        */
         if (x0 >= 0 && x0 < COLUNAS && y0 >= 0 && y0 < LINHAS) {
             matriz[y0][x0] = 1; // Define o pixel como parte da linha
         }
-
+        /*
+        Calcula-se o dobro do valor atual de erro e armazena em e2. 
+        e2 é usado para tomar decisão sobre qual direção seguir (horizontal ou vertical) ao desenhar a linha.
+        */
         e2 = 2 * erro;
+        
+        /*
+        O segundo if verifica se e2 é maior que o negativo da diferença em y, se for, o próximo pixel a ser pintado será na direção horizontal. Desse modo, é subtraído dy do valor de erro com o objetivo de ajustar essa variável para as próximas rodadas e depois é incrementado x0 na direção especificada por sx.
+
+        */
+        
         if (e2 > -dy) {
             erro -= dy;
             x0 += sx;
         }
+        
+        
+    /* O terceiro if verifica se e2 é menor que a diferença em x, se for, o próximo pixel a ser pintado será na direção vertical. Nesse caso, adiciona-se dx ao valor de erro e incrementa y0 na direção especificada por sy.
+    */
         if (e2 < dx) {
             erro += dx;
             y0 += sy;
