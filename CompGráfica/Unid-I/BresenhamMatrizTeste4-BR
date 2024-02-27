@@ -1,0 +1,121 @@
+#include <stdio.h>
+
+#define LINHAS 10
+#define COLUNAS 20
+
+void bresenham(int x0, int y0, int x1, int y1, int matriz[LINHAS][COLUNAS]) {
+    int dx = x1 - x0;
+    int dy = y1 - y0;
+    int sx, sy, erro, e2;
+
+    if (dy < 0) {
+        dy = -dy;
+        sy = -1;
+    } else {
+        sy = 1;
+    }
+
+    if (dx < 0) {
+        dx = -dx;
+        sx = -1;
+    } else {
+        sx = 1;
+    }
+
+    erro = dx - dy;
+
+    while (x0 != x1 || y0 != y1) {
+        if (x0 >= 0 && x0 < COLUNAS && y0 >= 0 && y0 < LINHAS) {
+            matriz[y0][x0] = 1; // Define o pixel como parte da linha
+        }
+
+        e2 = 2 * erro;
+        if (e2 > -dy) {
+            erro -= dy;
+            x0 += sx;
+        }
+        if (e2 < dx) {
+            erro += dx;
+            y0 += sy;
+        }
+    }
+}
+
+int main() {
+    int matriz[LINHAS][COLUNAS] = {0}; // Inicializa a matriz com zeros
+
+    // Solicita os pontos inicial e final da linha ao usuário
+    int x0, y0, x1, y1;
+    printf("OBS: Limite de x: 0 a 19\n\tLimite de y: 0 a 9\n");
+    printf("\tx pontos horizontais e y pontos verticais\n\n");
+    printf("Digite as coordenadas do ponto inicial (x0 y0): ");
+    scanf("%d %d", &x0, &y0);
+    printf("Digite as coordenadas do ponto final (x1 y1): ");
+    scanf("%d %d", &x1, &y1);
+    printf("\n");
+    
+    // Desenha a linha usando o algoritmo de Bresenham
+    bresenham(x0, y0, x1, y1, matriz);
+
+    // Imprime a matriz
+    for (int i = 0; i < LINHAS; i++) {
+        for (int j = 0; j < COLUNAS; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+/*
+Este programa em C implementa o algoritmo de Bresenham para desenhar uma linha em uma matriz bidimensional. Vamos entender cada parte:
+
+    Definição de Constantes:
+        LINHAS e COLUNAS definem o tamanho da matriz que representa a tela onde desenharemos a linha.
+        A função bresenham recebe os pontos inicial e final da linha, bem como a matriz onde desenharemos.
+
+    Função bresenham:
+        Calcula as diferenças em x e y entre os pontos inicial e final.
+        Determina os incrementos sx e sy com base nas diferenças.
+        Inicializa o erro erro como a diferença em x.
+        O loop continua até que os pontos sejam iguais.
+        Se o ponto atual estiver dentro dos limites da matriz, marcamos esse pixel como parte da linha.
+        Atualizamos o erro e os pontos x e y conforme o algoritmo de Bresenham.
+
+    Função main:
+        Inicializa a matriz com zeros.
+        Solicita ao usuário os pontos inicial e final da linha.
+        Chama a função bresenham para desenhar a linha na matriz.
+        Imprime a matriz resultante.
+
+O algoritmo de Bresenham é eficiente e usado para desenhar linhas em sistemas gráficos. 
+Ele calcula os pixels discretos que formam a linha, evitando o uso de números reais e arredondamentos. 
+O resultado é uma representação aproximada da linha na matriz. Neste caso, a matriz impressa mostra os 
+pixels que fazem parte da linha entre os pontos fornecidos pelo usuário.
+
+
+Vou explicar o propósito de cada uma dessas variáveis no código:
+
+
+
+    sx e sy:
+        Essas variáveis representam os incrementos nos eixos x e y, respectivamente.
+        O valor de sx é 1 se a diferença em x entre os pontos inicial e final for positiva, caso contrário, é -1.
+        O valor de sy é 1 se a diferença em y entre os pontos inicial e final for positiva, caso contrário, é -1.
+        Esses incrementos são usados para determinar a direção em que a linha está sendo desenhada.
+
+    erro:
+        A variável erro representa o erro acumulado durante o desenho da linha.
+        Inicialmente, é definida como a diferença em x entre os pontos inicial e final.
+        À medida que a linha é desenhada, o erro é atualizado com base nas diferenças em x e y.
+        O algoritmo de Bresenham usa esse erro para decidir qual pixel deve ser marcado como parte da linha.
+
+    e2:
+        A variável e2 é um valor auxiliar usado para otimizar o algoritmo.
+        Ela é calculada como o dobro do erro.
+        Comparando e2 com as diferenças em x e y, o algoritmo decide se deve mover-se horizontalmente ou verticalmente.
+
+Essas variáveis são essenciais para o funcionamento correto do algoritmo de Bresenham, que desenha uma linha de forma 
+eficiente e precisa em uma matriz bidimensional.
+*/
