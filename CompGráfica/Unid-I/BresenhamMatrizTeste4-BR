@@ -197,3 +197,48 @@ Claro! Vamos analisar cada parte do código e entender o significado de cada var
 
 Espero que esta explicação tenha esclarecido o funcionamento do algoritmo de Bresenham e o papel de cada variável! 
 */
+
+/*
+Explicação 4:
+
+erro: Essa variável rastreia o erro acumulado durante o desenho da linha. 
+Ela é atualizada a cada iteração do loop enquanto a linha está sendo desenhada. 
+O valor de erro é usado para determinar se o próximo pixel a ser pintado deve ser na 
+direção horizontal ou vertical.
+
+e2: Essa variável é calculada como o dobro do valor de erro. Ela também é usada para 
+tomar decisões sobre qual direção seguir (horizontal ou vertical) ao desenhar a linha. 
+Se e2 for maior que o negativo da diferença em y (ou seja, e2 > -dy), o próximo pixel será 
+na direção horizontal. Se e2 for menor que a diferença em x (ou seja, e2 < dx), o próximo pixel 
+será na direção vertical.
+
+*/
+Explicação 5:
+
+Vamos analisar essa parte final da função em detalhes:
+
+    while (x0 != x1 || y0 != y1):
+        Este é o loop principal que executa o algoritmo de Bresenham até que o ponto final (x1, y1) seja alcançado.
+        O loop continua enquanto as coordenadas atuais (x0, y0) não coincidirem com as coordenadas do ponto final (x1, y1).
+
+    if (x0 >= 0 && x0 < COLUNAS && y0 >= 0 && y0 < LINHAS):
+        Esta condição verifica se as coordenadas atuais (x0, y0) estão dentro dos limites da matriz.
+        Se estiverem dentro dos limites, o pixel correspondente na matriz é definido como parte da linha (ou seja, atribuído o valor 1).
+
+    e2 = 2 * erro;:
+        Aqui, calculamos o dobro do valor atual de erro e armazenamos em e2.
+        O valor de e2 é usado para tomar decisões sobre qual direção seguir (horizontal ou vertical) ao desenhar a linha.
+
+    if (e2 > -dy):
+        Se e2 for maior que o negativo da diferença em y (ou seja, e2 > -dy), o próximo pixel a ser pintado será na direção horizontal.
+        Nesse caso, subtraímos dy do valor de erro e incrementamos x0 na direção especificada por sx.
+
+    if (e2 < dx):
+        Se e2 for menor que a diferença em x (ou seja, e2 < dx), o próximo pixel a ser pintado será na direção vertical.
+        Nesse caso, adicionamos dx ao valor de erro e incrementamos y0 na direção especificada por sy.
+
+Em resumo, esse trecho de código é responsável por atualizar as coordenadas (x0, y0) e o valor de erro durante o processo de desenho da linha usando o algoritmo de Bresenham. Ele garante que a linha seja traçada corretamente, ajustando as coordenadas conforme necessário para percorrer o caminho mais próximo entre os pontos inicial e final. 
+O resultado final é uma linha reta representada na matriz matriz.
+
+*/
+
