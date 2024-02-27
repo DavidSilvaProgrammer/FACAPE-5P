@@ -61,3 +61,33 @@ int main() {
 
     return 0;
 }
+
+
+/*
+
+O código que você forneceu implementa o algoritmo de Bresenham para desenhar uma linha em uma matriz bidimensional. Vamos analisá-lo:
+
+    Variáveis e Inicialização:
+        As variáveis dx e dy representam as diferenças nas coordenadas x e y entre os pontos inicial e final da linha.
+        sx e sy são usados para determinar a direção da linha (positiva ou negativa) ao longo dos eixos x e y.
+        err e e2 são variáveis auxiliares para acompanhar o erro acumulado durante o desenho da linha.
+        A matriz matrix é inicializada com zeros.
+
+    Tratamento de Sinais:
+        O código verifica se dx e dy são negativos e ajusta as variáveis sx e sy de acordo.
+        Isso garante que o algoritmo funcione corretamente, independentemente da direção da linha.
+
+    Loop Principal:
+        O loop while continua até que os pontos inicial e final da linha sejam iguais.
+        Para cada ponto (x0, y0) no caminho da linha, o código verifica se está dentro dos limites da matriz e, se sim, define o valor como 1 (representando que o pixel faz parte da linha).
+        O erro é atualizado com base nas diferenças dx e dy.
+        Os valores de x0 e y0 são atualizados de acordo com os sinais de sx e sy.
+
+    Função main:
+        Define os pontos inicial e final da linha (x0, y0, x1, y1).
+        Chama a função bresenham para desenhar a linha na matriz.
+        Imprime a matriz resultante.
+
+ 😊
+
+*/
