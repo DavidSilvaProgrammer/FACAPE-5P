@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+// Função para desenhar uma matriz simulada com zeros e uns usando o Algoritmo de Bresenham
+void bresenham_matrix(int x1, int y1, int x2, int y2) {
+    int slope;
+    int dx, dy, incE, incNE, d, x, y;
+
+    // Inverte a linha se x1 > x2
+    if (x1 > x2) {
+        bresenham_matrix(x2, y2, x1, y1);
+        return;
+    }
+
+    dx = x2 - x1;
+    dy = y2 - y1;
+
+    // Determina a inclinação da reta
+    if (dy < 0) {
+        slope = -1;
+        dy = -dy;
+    } else {
+        slope = 1;
+    }
+
+    // Constantes de Bresenham
+    incE = 2 * dy;
+    incNE = 2 * dy - 2 * dx;
+    d = 2 * dy - dx;
+    y = y1;
+
+    // Cria uma matriz 2D para representar a reta
+    int matrix[100][100] = {0}; // Tamanho arbitrário da matriz
+
+    // Percorre os pontos da reta e preenche a matriz
+    for (x = x1; x <= x2; x++) {
+        if (d <= 0) {
+            d += incE;
+        } else {
+            d += incNE;
+            y += slope;
+        }
+
+        // Define o valor na matriz como 1 se d > 0, caso contrário, 0
+        matrix[y][x] = (d > 0) ? 1 : 0;
+    }
+
+    // Imprime a matriz (representação da reta)
+    for (int i = 0; i <= y2; i++) {
+        for (int j = 0; j <= x2; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    // Exemplo de uso: desenha uma reta de (1, 1) a (8, 4)
+    bresenham_matrix(1, 1, 8, 4);
+
+    return 0;
+}
