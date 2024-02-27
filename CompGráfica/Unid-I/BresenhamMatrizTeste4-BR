@@ -119,3 +119,35 @@ Vou explicar o propósito de cada uma dessas variáveis no código:
 Essas variáveis são essenciais para o funcionamento correto do algoritmo de Bresenham, que desenha uma linha de forma 
 eficiente e precisa em uma matriz bidimensional.
 */
+
+
+/*
+Segunda explicação:
+
+Claro! O código em C que você forneceu implementa o algoritmo de Bresenham para desenhar uma linha em uma matriz bidimensional. Vou explicar como ele segue a lógica do algoritmo:
+
+    Cálculo das diferenças em x e y:
+        dx = x1 - x0
+        dy = y1 - y0
+
+    Determinação dos sinais de incremento (sx e sy):
+        Se dy for negativo, inverte o sinal de dy e define sy = -1.
+        Caso contrário, sy = 1.
+        O mesmo é feito para dx e sx.
+
+    Inicialização do parâmetro de erro (erro):
+        erro = dx - dy
+
+    Loop principal:
+        Enquanto x0 não for igual a x1 ou y0 não for igual a y1:
+            Se as coordenadas (x0, y0) estiverem dentro dos limites da matriz:
+                Define o pixel na posição (x0, y0) como parte da linha (atribui 1 à matriz).
+            Calcula e2 = 2 * erro.
+            Se e2 for maior que -dy, atualiza erro e incrementa ou decrementa x0 (dependendo do sinal de sx).
+            Se e2 for menor que dx, atualiza erro e incrementa ou decrementa y0 (dependendo do sinal de sy).
+
+    Impressão da matriz resultante:
+        O código imprime a matriz preenchida com 0s e 1s, onde 1 representa os pixels que fazem parte da linha desenhada.
+
+Lembre-se de que a matriz resultante será impressa no console, mostrando os pixels que formam a linha entre os pontos inicial e final que você especificou. 😊
+*/
