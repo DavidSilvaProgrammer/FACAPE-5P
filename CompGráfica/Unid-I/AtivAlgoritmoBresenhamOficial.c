@@ -1,6 +1,15 @@
-//Programa em C que implementa o algoritmo de Bresenham para desenhar uma linha em uma matriz bidimensional por meio de zeros e uns.
+/*
 
+Instituição: FACAPE
+Disciplina: Computação Gráfica
+Aluno: David Santana de Oliveira Silva
+Curso: Ciência da Computação
+Periódo: 5
 
+Programa em C que implementa o algoritmo de Bresenham para desenhar uma linha em uma matriz bidimensional 
+por meio de zeros e uns.
+
+*/
 #include <stdio.h>
 
 //LINHAS e COLUNAS definem o tamanho da matriz que representa a tela onde a linha será traçada
