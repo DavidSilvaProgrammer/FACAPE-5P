@@ -61,3 +61,28 @@ int main() {
 
     return 0;
 }
+
+/*
+O código que você forneceu implementa o algoritmo de Bresenham para desenhar uma linha em uma matriz bidimensional. Vou explicar o que cada parte do código faz:
+
+    Função bresenham:
+        Essa função calcula os pontos intermediários ao longo de uma linha reta entre dois pontos dados.
+        Ela recebe as coordenadas dos pontos iniciais (x0, y0) e finais (x1, y1), bem como uma matriz bidimensional chamada matrix.
+        O algoritmo de Bresenham é usado para determinar quais pixels na matriz devem ser definidos como parte da linha.
+        Ele utiliza uma abordagem incremental para traçar a linha, evitando o uso de números de ponto flutuante.
+        Os valores sx e sy controlam a direção do incremento ao longo dos eixos X e Y.
+        O erro err é usado para ajustar os incrementos.
+        O loop while continua até que os pontos iniciais sejam iguais aos pontos finais.
+
+    Função main:
+        Aqui, você inicializa uma matriz de tamanho 10x20 com zeros.
+        Define os pontos iniciais e finais da linha (no exemplo, (2, 1) e (17, 8)).
+        Chama a função bresenham para desenhar a linha na matriz.
+        Em seguida, imprime a matriz resultante.
+
+    Saída:
+        A matriz impressa contém 1s nos pixels que fazem parte da linha traçada pelo algoritmo de Bresenham e 0s nos demais pixels.
+
+Se você tiver mais perguntas ou precisar de mais esclarecimentos, estou à disposição! 😉
+
+*/
