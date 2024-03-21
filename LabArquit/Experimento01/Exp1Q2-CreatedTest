@@ -25,7 +25,41 @@ void main() {
             calcular = 1;
             ok0 = 0;
         }
-        // Repita para C1, C2, ..., C7
+        if (C1 == 0 && ok1) {
+            PortD = PortD - 0x02;
+            calcular = 1;
+            ok1 = 0;
+        }
+        if (C2 == 0 && ok2) {
+            PortD = PortD - 0x04;
+            calcular = 1;
+            ok2 = 0;
+        }
+        if (C3 == 0 && ok3) {
+            PortD = PortD - 0x08;
+            calcular = 1;
+            ok3 = 0;
+        }
+        if (C4 == 0 && ok4) {
+            PortD = PortD - 0x10;
+            calcular = 1;
+            ok4 = 0;
+        }
+        if (C5 == 0 && ok5) {
+            PortD = PortD - 0x20;
+            calcular = 1;
+            ok5 = 0;
+        }
+        if (C6 == 0 && ok6) {
+            PortD = PortD - 0x40;
+            calcular = 1;
+            ok6 = 0;
+        }
+        if (C7 == 0 && ok7) {
+            PortD = PortD - 0x80;
+            calcular = 1;
+            ok7 = 0;
+        }
 
         if (calcular) {
             // Ajuste os coeficientes m e b conforme necessário
@@ -45,3 +79,39 @@ void main() {
         }
     }
 }
+
+
+******************
+
+
+/*
+
+
+
+    Configuração Inicial:
+        As portas B são definidas como entradas (TrisB = 0xFF).
+        As portas D são definidas como saídas (TrisD = 0x00).
+        ADCON1 é configurado para 0x0F (modo digital).
+        CMCON é configurado para 7 (desativa o comparador analógico).
+        RBPU_bit é definido como 0 (habilita as resistências pull-up internas).
+
+    Variáveis de Controle:
+        calcular: Indica se o cálculo da saída deve ser realizado.
+        ok0, ok1, …, ok7: Variáveis de controle para cada porta C.
+
+    Loop Principal:
+        O programa entra em um loop infinito (while(1)).
+        Verifica se o botão C0 foi pressionado e se a variável ok0 é verdadeira. Se sim, decrementa o valor de PortD em 1 e define calcular como verdadeiro.
+        Repete o mesmo processo para os outros botões C (C1, C2, …, C7).
+
+    Cálculo da Saída:
+        Coeficientes m e b são ajustados conforme necessário.
+        A equação da reta é aplicada: saida = m * PortD + b.
+        Para números negativos, é aplicado o sistema de complemento de dois.
+        O resultado é armazenado em PortD.
+
+    Observações:
+        O código assume que os botões C estão conectados e funcionando corretamente.
+        Os valores de m e b devem ser ajustados com base nos requisitos específicos do seu projeto.
+
+*/
