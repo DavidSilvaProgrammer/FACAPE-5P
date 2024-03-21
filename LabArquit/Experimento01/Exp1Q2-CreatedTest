@@ -1,0 +1,47 @@
+#include <pic18f4550.h>
+
+void main() {
+    bit calcular, ok0, ok1, ok2, ok3, ok4, ok5, ok6, ok7;
+    TrisB = 0xFF; // Todas as portas B como entradas
+    TrisD = 0x00; // Todas as portas D como saídas
+    PortB = 0xFF;
+    PortD = 0xFF;
+    ADCON1 = 0x0F;
+    CMCON = 7;
+    RBPU_bit = 0;
+    calcular = 0;
+    ok0 = 1;
+    ok1 = 1;
+    ok2 = 1;
+    ok3 = 1;
+    ok4 = 1;
+    ok5 = 1;
+    ok6 = 1;
+    ok7 = 1;
+
+    while (1) {
+        if (C0 == 0 && ok0) {
+            PortD = PortD - 0x01;
+            calcular = 1;
+            ok0 = 0;
+        }
+        // Repita para C1, C2, ..., C7
+
+        if (calcular) {
+            // Ajuste os coeficientes m e b conforme necessário
+            int m = 4; // Exemplo: ajuste manual
+            int b = 10; // Exemplo: ajuste manual
+
+            // Aplicação da equação da reta
+            int saida = m * PortD + b;
+
+            // Aplicação do sistema de complemento de dois para números negativos
+            if (saida < 0) {
+                saida = 64 + saida; // Escala 64
+            }
+
+            PortD = saida;
+            calcular = 0;
+        }
+    }
+}
