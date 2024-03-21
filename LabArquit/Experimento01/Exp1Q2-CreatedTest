@@ -115,3 +115,44 @@ void main() {
         Os valores de m e b devem ser ajustados com base nos requisitos específicos do seu projeto.
 
 */
+
+
+*****************************
+
+/*
+
+Vamos analisar o código em C e entender cada parte dele. Também projetaremos um firmware para exibir na saída o resultado da equação de reta com base no gráfico fornecido.
+
+    Configuração Inicial:
+        TrisB = 0xFF;: Define todas as portas B como entradas.
+        TrisD = 0x00;: Define todas as portas D como saídas.
+        PortB = 0xFF;: Define todas as portas B com nível alto (1).
+        PortD = 0xFF;: Define todas as portas D com nível alto (1).
+        ADCON1 = 0x0F;: Configura o ADC para modo digital.
+        CMCON = 7;: Desativa o comparador analógico.
+        RBPU_bit = 0;: Habilita as resistências pull-up internas.
+
+    Variáveis de Controle:
+        tarefa: Não está sendo usada no código fornecido.
+        calcular: Indica se o cálculo da saída deve ser realizado.
+        ok0, ok1, …, ok7: Variáveis de controle para cada porta C.
+
+    Loop Principal:
+        O programa entra em um loop infinito (while(1)).
+        Verifica se o botão C0 foi pressionado e se a variável ok0 é verdadeira. Se sim, decrementa o valor de PortD em 1 e define calcular como verdadeiro.
+        Repete o mesmo processo para os outros botões C (C1, C2, …, C7).
+
+    Cálculo da Saída:
+        Não está completamente implementado no código fornecido. O trecho de código que faz o cálculo da saída está incompleto (após if (calcular)).
+        O ajuste dos coeficientes m e b não está presente no código. Esses valores devem ser ajustados com base nos requisitos específicos do projeto.
+        A aplicação da equação da reta (saida = m * PortD + b) e a conversão para sistema de complemento de dois para números negativos também não estão implementadas.
+
+    Observações:
+        O código não está completo e precisa ser ajustado para calcular corretamente a saída com base na entrada das chaves.
+        É importante definir os coeficientes m e b com base na relação entre as escalas de entrada e saída (16 e 256, respectivamente).
+        A implementação do cálculo da saída deve considerar a conversão para números negativos usando o sistema de complemento de dois.
+
+Para completar o código, você precisará adicionar o trecho que calcula a saída com base na equação de reta e ajustar os coeficientes conforme necessário.
+
+
+*/
