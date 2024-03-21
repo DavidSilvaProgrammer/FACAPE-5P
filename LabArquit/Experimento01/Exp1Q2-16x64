@@ -1,0 +1,125 @@
+Pessoal, a questão consegui ajustar a nossa questão pelo , mas ainda falta conferir se está certo.
+
+Trecho da questão 2 antiga
+
+Como mostra o gráfico, a entrada é representada por números
+inteiros não-negativos com escala 16, e a saída é representada por números inteiros sinalizados com escala 256
+
+
+Trecho da questão 2 nossa atual diferente
+
+Como mostra o gráfico, a entrada é representada por números inteiros não-negativos com escala 16, e a saída é representada por números inteiros sinalizados com escala 64.
+
+
+
+
+Para identificar onde está o critério de escala no código fornecido, observe as linhas onde os valores são atribuídos ou manipulados nos pinos de saída PortD.
+
+No código fornecido, a escala de 16 é representada quando os valores de 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40 e 0x80 são subtraídos de PortD dependendo da entrada das chaves. Isso ocorre em cada uma das condições if onde é verificado o estado das chaves C0 a C7. Esses valores são potências de 2, que seguem a escala de 16, pois 16 é igual a 2 elevado à 4ª potência.
+
+Já a escala de 256 é representada quando o valor resultante de PortD é multiplicado por 0x11 e então subtraído de 0x7F. Isso acontece na condição if(calcular) dentro do loop principal.
+
+Portanto, podemos identificar o critério de escala nos seguintes trechos do código:
+
+    Escala 16:
+        PortD = PortD - 0x01;
+        PortD = PortD - 0x02;
+        PortD = PortD - 0x04;
+        PortD = PortD - 0x08;
+        PortD = PortD - 0x10;
+        PortD = PortD - 0x20;
+        PortD = PortD - 0x40;
+        PortD = PortD - 0x80;
+
+    Escala 256:
+        PortD = 0x7F - 0x11 * PortD;
+
+Esses trechos refletem a lógica de escala descrita no enunciado, onde as entradas e saídas são mapeadas nas escalas especificadas.
+
+Claro, para alterar a escala para 16 e 64, você precisa ajustar os valores usados no código para refletir essa mudança. Aqui está o código ajustado:
+
+*/
+
+void main() {
+     bit tarefa, calcular, ok0, ok1, ok2, ok3, ok4, ok5, ok6, ok7;
+     TrisB = 0xFF;
+     TrisD = 0x00;
+     PortB = 0xFF;
+     PortD = 0xFF;
+     ADCON1 = 0x0F;
+     CMCON = 7;
+     RBPU_bit = 0;
+     tarefa = 0;
+     calcular = 0;
+     ok0 = 1;
+     ok1 = 1;
+     ok2 = 1;
+     ok3 = 1;
+     ok4 = 1;
+     ok5 = 1;
+     ok6 = 1;
+     ok7 = 1;
+     while(1){
+        if(C0 == 0 & ok0){
+           PortD = PortD - 0x01; // Escala de 16
+           calcular = 1;
+           ok0 = 0;
+        }
+        if(C1 == 0 & ok1){
+           PortD = PortD - 0x04; // Escala de 16
+           calcular = 1;
+           ok1 = 0;
+        }
+        if(C2 == 0 & ok2){
+           PortD = PortD - 0x10; // Escala de 16
+           calcular = 1;
+           ok2 = 0;
+        }
+        
+        if(C3 == 0 & ok3){
+           PortD = PortD - 0x40; // Escala de 16
+           calcular = 1;
+           ok3 = 0;
+        }
+        
+        if(C4 == 0 & ok4){
+           PortD = PortD - 0x01; // Escala de 64
+           calcular = 1;
+           ok4 = 0;
+        }
+        
+        if(C5 == 0 & ok5){
+           PortD = PortD - 0x10; // Escala de 64
+           calcular = 1;
+           ok5 = 0;
+        }
+        
+        if(C6 == 0 & ok6){
+           PortD = PortD - 0x40; // Escala de 64
+           calcular = 1;
+           ok6 = 0;
+        }
+        
+        if(C7 == 0 & ok7){
+           PortD = PortD - 0x01; // Escala de 64
+           calcular = 1;
+           ok7 = 0;
+        }
+        
+        if(calcular){
+           PortD = 0x3F - 0x11 * PortD; // Escala de 64
+           calcular = 0;
+        }
+     }
+}
+
+
+
+*******************************
+
+
+Neste código ajustado, as operações de subtração de PortD foram alteradas para refletir as escalas de 16 e 64 conforme solicitado:
+
+    Escala 16: Utilizamos os valores 0x01, 0x04, 0x10 e 0x40 para representar a escala de 16.
+    Escala 64: Utilizamos os valores 0x01, 0x10 e 0x40 para representar a escala de 64.
+    A operação na linha PortD = 0x3F - 0x11 * PortD; foi ajustada para a escala de 64.
