@@ -1,0 +1,71 @@
+O código fornecido está na direção correta para manipular os valores de entrada das chaves dip-switch e calcular a saída com base na equação da reta. No entanto, ele precisa de algumas modificações para se adequar aos requisitos específicos da questão. Vou ajudá-lo a ajustar e complementar o código conforme necessário.
+
+Primeiro, vamos determinar a equação da reta com base nos pontos fornecidos no enunciado: (x1,y1)=(0,127)(x1​,y1​)=(0,127) e (x2,y2)=(15,−128)(x2​,y2​)=(15,−128). Podemos calcular o coeficiente angular mm usando a fórmula:
+
+m=y2−y1x2−x1m=x2​−x1​y2​−y1​​
+
+m=−128−12715−0m=15−0−128−127​
+
+m=−25515m=15−255​
+
+m=−17m=−17
+
+Agora, com o coeficiente angular mm determinado, podemos usar a fórmula da equação da reta para encontrar o coeficiente linear bb. Vamos usar o ponto (x1,y1)=(0,127)(x1​,y1​)=(0,127):
+
+y=mx+by=mx+b
+
+127=−17×0+b127=−17×0+b
+
+b=127b=127
+
+Agora, temos a equação da reta completa: y=−17x+127y=−17x+127.
+
+Com essa equação, podemos modificar o firmware para calcular a saída (LEDs) com base na entrada (chaves) usando essa equação da reta. Vou fornecer o código modificado:
+
+
+*******************
+
+
+#define C0 RB0_bit
+#define C1 RB1_bit
+#define C2 RB2_bit
+#define C3 RB3_bit
+#define C4 RB4_bit
+#define C5 RB5_bit
+#define C6 RB6_bit
+#define C7 RB7_bit
+
+void main() {
+    // Coeficientes da equação da reta
+    float m = -17.0; // Coeficiente angular
+    float b = 127.0;  // Coeficiente linear
+
+    // Variáveis para controle do loop e cálculos
+    int entrada;
+    int saida;
+
+    // Configuração dos pinos de entrada e saída
+    TRISB = 0xFF; // Configura os pinos RB0-RB7 como entrada (dip-switch)
+    TRISD = 0x00; // Configura os pinos RD0-RD7 como saída (LEDs)
+
+    // Loop infinito para ler as entradas e calcular as saídas
+    while(1) {
+        // Lê os valores do dip-switch de entrada
+        entrada = PORTB;
+
+        // Calcula a saída com base na equação da reta
+        float entrada_escala = entrada * 16.0 / 255.0; // Converte a escala de 0-255 para 0-15
+        float saida_float = m * entrada_escala + b;
+
+        // Converte a saída para a escala dos LEDs (0-255)
+        // Verifica se a saída é negativa e realiza a conversão para o sistema complemento de dois
+        if (saida_float < 0) {
+            saida = (int)(saida_float * 256.0 / 127.0) + 256; // Conversão para sistema complemento de dois
+        } else {
+            saida = (int)(saida_float * 256.0 / 127.0);
+        }
+
+        // Atualiza a saída nos LEDs
+        PORTD = saida;
+    }
+}
