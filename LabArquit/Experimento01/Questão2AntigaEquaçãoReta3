@@ -35,6 +35,51 @@ void main() {
     }
 }
 
+*********************
+
+
+//Segunda versão
+
+#include <pic18f4550.h>
+
+// Configurações iniciais
+void setup() {
+    // Configura os pinos de entrada e saída
+    TRISC = 0b00001111; // RC0 a RC3 como entrada (chaves), RC4 a RC7 como saída (LEDs)
+}
+
+// Função para converter entrada em saída
+int convertInputToOutput(int entrada) {
+    int saida;
+
+    // Aplica a equação da reta
+    saida = -255 * entrada + 127;
+
+    // Tratamento para números negativos (sistema de complemento de dois)
+    if (saida < 0) {
+        saida = ~saida + 1;
+    }
+
+    return saida;
+}
+
+void main() {
+    int entrada = 0; // Valor da entrada (0 a 15)
+
+    setup();
+
+    // Loop infinito
+    while (1) {
+        // Lê o valor das chaves (entrada)
+        entrada = PORTC & 0b00001111;
+
+        // Converte a entrada em saída
+        int saida = convertInputToOutput(entrada);
+
+        // Atualiza os LEDs com o valor da saída
+        PORTC = (PORTC & 0b11110000) | (saida & 0b00001111);
+    }
+}
 
 *****
 
