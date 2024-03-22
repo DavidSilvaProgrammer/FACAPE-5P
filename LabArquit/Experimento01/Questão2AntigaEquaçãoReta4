@@ -1,0 +1,65 @@
+// Defina os pinos de entrada e saída
+#define DIP_SWITCH PORTB // Pinos RB0-RB7 como entrada (dip-switch)
+#define LEDS PORTD // Pinos RD0-RD7 como saída (LEDs)
+
+void main() {
+    // Coeficientes da equação da reta
+    float m = -8.5; // Coeficiente angular
+    float b = 127.0; // Coeficiente linear
+
+    // Variáveis para controle do loop e cálculos
+    int entrada;
+    int saida;
+
+    // Configuração dos pinos
+    TRISB = 0xFF; // Configura os pinos RB0-RB7 como entrada
+    TRISD = 0x00; // Configura os pinos RD0-RD7 como saída
+
+    // Loop infinito para ler as entradas e calcular as saídas
+    while (1) {
+        // Lê os valores do dip-switch de entrada
+        entrada = DIP_SWITCH;
+
+        // Calcula a saída usando a equação da reta
+        saida = (int)(m * entrada + b);
+
+        // Tratamento de números negativos (sistema de complemento de dois)
+        if (saida < 0) {
+            saida = 256 + saida; // Convertendo para representação positiva
+        }
+
+        // Atualiza os LEDs com o valor de saída
+        LEDS = saida;
+    }
+}
+
+
+**********************
+
+
+/*
+if (saida < 0) {
+    saida = ~saida; // Complemento de um
+    saida += 1;     // Adição de 1 para obter o complemento de dois
+}
+
+
+Não, a operação saida = 256 + saida; no primeiro código não equivale ao complemento de dois. Esta operação apenas
+mapeia os valores negativos para dentro do intervalo dos LEDs.
+
+No sistema de complemento de dois, para representar números negativos, você inverte todos os bits do número e
+adiciona 1 ao resultado. Isso resulta em uma representação binária em que o bit mais significativo (o bit mais à esquerda) é usado para indicar o sinal do número.
+
+Por exemplo, no sistema de 8 bits:
+
+    O número 3 é representado como 00000011.
+    Se quisermos representar -3, primeiro invertemos os bits para obter 11111100, e então adicionamos 1, 
+resultando em 11111101.
+
+No código fornecido, a operação saida = 256 + saida; apenas mapeia os valores negativos de saida para dentro 
+do intervalo 0-255 (ou seja, o intervalo dos LEDs), mas não realiza a operação de complemento de dois. 
+Isso significa que, embora a operação possa permitir que você exiba valores negativos nos LEDs, não reflete a 
+representação correta de números negativos no sistema de complemento de dois.
+
+
+*/
