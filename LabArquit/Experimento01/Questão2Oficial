@@ -1,0 +1,35 @@
+// Defina os pinos de entrada e saída
+#define DIP_SWITCH PORTB // Pinos RB0-RB7 como entrada (dip-switch)
+#define LEDS PORTD // Pinos RD0-RD7 como saída (LEDs)
+
+void main() {
+    // Coeficientes da equação da reta
+    float m = -4.2; // Coeficiente angular
+    float b = 31; // Coeficiente linear
+
+    // Variáveis para controle do loop e cálculos
+    int entrada;
+    int saida;
+
+    // Configuração dos pinos
+    TRISB = 0xFF; // Configura os pinos RB0-RB7 como entrada
+    TRISD = 0x00; // Configura os pinos RD0-RD7 como saída
+
+    // Loop infinito para ler as entradas e calcular as saídas
+    while (1) {
+        // Lê os valores do dip-switch de entrada
+        entrada = DIP_SWITCH * 16; // Ajusta a entrada para escala 16
+
+        // Calcula a saída usando a equação da reta
+        saida = (int)(m * entrada + b) * 64; // Ajusta a saída para escala 64
+
+        // Tratamento de números negativos (sistema de complemento de dois)
+        if (saida < 0) {
+           saida = ~saida; // Complemento de um
+           saida += 1;     // Adição de 1 para obter o complemento de dois
+        }
+
+        // Atualiza os LEDs com o valor de saída
+        LEDS = saida;
+    }
+}
