@@ -1,0 +1,36 @@
+#include <pic18f4550.h>
+
+// Defina os pinos de entrada e saída
+#define DIP_SWITCH PORTB // Pinos RB0-RB7 como entrada (dip-switch)
+#define LEDS PORTD // Pinos RD0-RD7 como saída (LEDs)
+
+void main() {
+    // Coeficientes da equação da reta
+    float m = -17.0; // Coeficiente angular
+    float b = 127.0; // Coeficiente linear
+
+    // Variáveis para controle do loop e cálculos
+    int entrada;
+    int saida;
+
+    // Configuração dos pinos
+    TRISB = 0xFF; // Configura os pinos RB0-RB7 como entrada
+    TRISD = 0x00; // Configura os pinos RD0-RD7 como saída
+
+    // Loop infinito para ler as entradas e calcular as saídas
+    while (1) {
+        // Lê os valores do dip-switch de entrada
+        entrada = DIP_SWITCH;
+
+        // Calcula a saída usando a equação da reta
+        saida = (int)(m * entrada + b);
+
+        // Tratamento de números negativos (sistema de complemento de dois)
+        if (saida < 0) {
+            saida = 256 + saida; // Transforma em valor positivo
+        }
+
+        // Atualiza os LEDs com o valor de saída
+        LEDS = saida;
+    }
+}
