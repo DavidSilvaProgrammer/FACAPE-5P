@@ -53,7 +53,7 @@ int convertInputToOutput(int entrada) {
     int saida;
 
     // Aplica a equação da reta
-    saida = -255 * entrada + 127;
+    saida = -17 * entrada + 127;
 
     // Tratamento para números negativos (sistema de complemento de dois)
     if (saida < 0) {
@@ -80,6 +80,3 @@ void main() {
         PORTC = (PORTC & 0b11110000) | (saida & 0b00001111);
     }
 }
-
-*****
-
