@@ -1,0 +1,35 @@
+Para projetar um firmware para exibir na saída o resultado da equação da reta representada pelo gráfico, 
+você precisará seguir algumas etapas:
+
+    Coleta de dados: Primeiro, você precisa coletar os pontos do gráfico. Cada ponto consiste em um par de 
+valores (entrada, saída).
+
+    Cálculo da equação da reta: Use os pontos coletados para calcular os coeficientes da equação da reta.
+A equação da reta geralmente é dada por y=mx+by=mx+b, onde mm é o coeficiente angular e bb é o coeficiente linear.
+
+    Adaptação dos valores de entrada e saída: Dado que as entradas e saídas têm escalas diferentes
+(16 para entrada e 256 para saída), você precisa ajustar os valores para garantir que a representação seja precisa.
+
+    Implementação do firmware: Usando um microcontrolador PIC 18F4550, você pode escrever o firmware em uma linguagem
+como C. O firmware deve ler as entradas do dip-switch, calcular a saída usando a equação da reta e exibir o resultado
+nos LEDs.
+
+Agora, vamos abordar a questão do sistema de representação de números negativos usando o sistema de complemento de
+dois.
+
+O sistema de complemento de dois é uma forma de representar números inteiros, incluindo negativos, em binário. No 
+sistema de complemento de dois:
+
+    Números positivos são representados normalmente em binário.
+    Para representar um número negativo, você primeiro inverte todos os bits do número positivo correspondente e, 
+em seguida, adiciona 1 ao resultado.
+
+Por exemplo, com 8 bits:
+
+    Para representar +70, você teria 0100011001000110.
+    Para representar -70, você inverteria os bits de +70 para obter 1011100110111001 e, em seguida, adicionaria 1, resultando em 1011101010111010.
+
+Portanto, no seu firmware, ao lidar com números negativos nas saídas, você deve garantir que os cálculos sejam feitos 
+considerando o sistema de complemento de dois. Isso pode envolver manipulações de bits para realizar a adição ou
+subtração adequada, conforme necessário. Certifique-se de verificar os recursos de manipulação de bits oferecidos
+pela linguagem de programação que você está usando (como C) e implementar corretamente essas operações no firmware.
