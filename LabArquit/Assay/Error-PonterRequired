@@ -1,0 +1,31 @@
+void main() {
+    TRISD = 0;    // Define todo o PORTD como saída
+    TRISB = 0xFF; // Define todo o PORTB como entrada
+
+    while (1) {
+        if ((PORTB & 0x01) == 0) PORTD.F0 = 1; // Verifica o bit 0 de PORTB
+        else if ((PORTB & 0x02) == 0) PORTD.F1 = 1; // Verifica o bit 1 de PORTB
+        else if ((PORTB & 0x04) == 0) PORTD.F2 = 1; // Verifica o bit 2 de PORTB
+        else if ((PORTB & 0x08) == 0) PORTD.F3 = 1; // Verifica o bit 3 de PORTB
+        else if ((PORTB & 0x10) == 0) PORTD.F4 = 1; // Verifica o bit 4 de PORTB
+        else if ((PORTB & 0x20) == 0) PORTD.F5 = 1; // Verifica o bit 5 de PORTB
+        else if ((PORTB & 0x40) == 0) PORTD.F6 = 1; // Verifica o bit 6 de PORTB
+        else if ((PORTB & 0x80) == 0) PORTD.F7 = 1; // Verifica o bit 7 de PORTB
+    }
+}
+
+/*
+
+Se o compilador está exigindo um ponteiro, isso sugere que ele não reconhece a notação de PORTB.F[i]. 
+Em alguns compiladores, como o XC8 utilizado pelo MikroC, o acesso aos bits dos registradores é realizado 
+usando uma notação diferente, geralmente com ponteiros.
+
+Para resolver isso, você pode tentar acessar os bits de outra maneira. Uma abordagem é usar operações de 
+bit shifting e máscaras para acessar cada bit individualmente. Aqui está como você pode fazer isso:
+
+Esta abordagem usa operadores bitwise para mascarar e verificar cada bit individual de PORTB. Se um bit estiver 
+em estado baixo (pressionado), o bit correspondente em PORTD será acionado.
+
+*/
+
+*/
