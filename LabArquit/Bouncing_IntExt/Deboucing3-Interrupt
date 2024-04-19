@@ -1,0 +1,34 @@
+bit ligar;
+
+void interrupt(){
+    if(INT0IF _bit == 1){
+        INT0IF_bit = 0;
+        ligar=!ligar;
+    }
+}
+
+
+void main(){
+
+TrisB = 0xFF;
+TrisD = 0x00;
+PortD = 0x00;
+ADCON1= 0x0F;
+CMCON=7;
+RBPU bit=0;
+ligar=0;
+GIE_bit=1; // interrupção global
+INT0IE_bit=1;  //interrupção externa
+
+
+while(1){
+
+    if(ligar == 1){ 
+        RD0_bit = 0; //acende o led Obs. Baixo ativo acende código anterior isso estava invertido
+    }
+    else{ //quando não pressiona o botão
+        RD0_bit=1; 
+    }
+
+}
+}
