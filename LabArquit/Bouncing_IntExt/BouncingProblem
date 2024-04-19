@@ -1,0 +1,21 @@
+bit ligar
+TrisB = 0xFF;
+TrisD = 0x00;
+PortD = 0x00;
+ADCON1= 0x0F;
+CMCON=7;
+RBPU bit=0;
+ligar=0;
+
+while(1){
+    if(INT0_bit == 0){ //pressiona botão
+    ligar = !ligar;
+}
+    if(ligar == 1){ 
+        RD0_bit = 1; //acende o led
+    }
+    else{ //quando não pressiona o botão
+        RD0_bit=0;
+    }
+
+}
