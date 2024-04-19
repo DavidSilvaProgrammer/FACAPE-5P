@@ -1,0 +1,22 @@
+bit ligar
+TrisB = 0xFF;
+TrisD = 0x00;
+PortD = 0x00;
+ADCON1= 0x0F;
+CMCON=7;
+RBPU bit=0;
+ligar=0;
+
+while(1){
+    if(INT0_bit == 0){ //pressiona botão
+    ligar = !ligar;
+}
+    if(ligar == 1){ 
+        RD0_bit = 0; //acende o led Obs. Baixo ativo acende código anterior isso estava invertido
+        delay_ms(250); //travamento por atraso para evitar ruído.
+    }
+    else{ //quando não pressiona o botão
+        RD0_bit=1; 
+    }
+
+}
