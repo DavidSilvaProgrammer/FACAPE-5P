@@ -1,0 +1,55 @@
+#define BUT0   RB0_bit
+#define BUT1   RB1_bit
+
+void main() {
+   unsigned short vetor[] = {1,2,4,8};
+   unsigned short indice = 0;
+   bit acao, deslocar, ir;
+   TrisB = 0xFF; // define a porta B como entrada
+   TrisD = 0x00; // define a porta D como saida
+   PortB = 0xFF; // toda a porta B está em nível alto
+   PortD = 0xFF; // todos os leds estao apagados
+   ADCON1 = 0x0F; // define todos os canais comom sendo entrada/saida digitais
+   CMCON = 7;     // desabilita os comparadores analógicos
+   RBPU_bit = 0; // ativando os pull-ups internos da porta B
+   acao = 0;
+   deslocar = 0;
+   ir = 0;
+   while(1){
+      if(BUT0 == 0){
+         acao = 1;
+         deslocar = 0;
+         PortD = 0x5; //Como é baixo ativo, os uns do 101 em binário vão ficar apagados e o resto acesso.
+      }
+      if(BUT1 == 0){
+         indice = 0;
+         PortD = ~vetor[indice];
+         deslocar = 1;
+         ir = 1;
+         acao = 0;
+      }
+      if(acao == 1){
+         PortD = ~PortD | 0x5;
+         delay_ms(500);
+      }
+      if(deslocar == 1){
+         delay_ms(500);
+         if(ir == 1){
+            if(indice == 3)
+               ir = 0;
+            else{
+               indice++;
+               PortD = ~vetor[indice];
+            }
+         }
+         else{
+            if(indice == 0)
+               ir = 1;
+            else{
+               indice--;
+               PortD = ~vetor[indice];
+            }
+         }
+      }
+   }
+}
