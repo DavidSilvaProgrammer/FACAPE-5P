@@ -33,3 +33,16 @@ public class Main {
         System.out.println("Matriz como string: " + resultado);
     }
 }
+
+
+/*
+
+Neste exemplo, temos uma matriz de strings representada pelo array bidimensional matriz. Primeiro, verificamos se 
+todas as linhas têm o mesmo número de colunas. Em seguida, percorremos a matriz e adicionamos cada elemento à 
+StringBuilder sb. Depois, convertemos sb em uma string usando o método toString() e a atribuímos 
+à variável resultado. Finalmente, imprimimos o tamanho da matriz e a matriz como uma string.
+
+Esse código funcionará independentemente do conteúdo das células da matriz, pois estamos tratando 
+a matriz como uma matriz de strings.
+
+*/
