@@ -48,6 +48,3 @@ Então, em resumo, matriz[0].length retorna o número de colunas na primeira lin
 Isso é útil quando você quer saber quantas colunas a matriz tem.
 
 */
-
-
-*/
