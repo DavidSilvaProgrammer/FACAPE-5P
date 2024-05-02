@@ -31,7 +31,7 @@ o método getTransformaStrEmInt() para obter o vetor de strings correspondente a
 conteúdo do arquivo. Por exemplo:
 
 LerArquivo lerArquivo = new LerArquivo("nome_do_arquivo");
-String vetorDeStrings = lerArquivo.getTransformaStrEmInt();
+String vetorDeStrings = lerArquivo.getConteudoArquivo();
 
 // Agora você pode usar o vetorDeStrings como desejar, por exemplo, em um JFrame
 // JFrame meuFrame = new JFrame();
