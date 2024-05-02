@@ -34,7 +34,7 @@ do StringBuilder para obter a string final e atribuímos a uma variável chamada
 
 
 
-a verdade, sb não é uma string, é um objeto da classe StringBuilder. O StringBuilder 
+Na verdade, sb não é uma string, é um objeto da classe StringBuilder. O StringBuilder 
 é uma classe que permite construir e manipular strings mutáveis em Java. Enquanto você usa 
 sb.append() dentro do loop, você está adicionando caracteres ao objeto StringBuilder.
 
