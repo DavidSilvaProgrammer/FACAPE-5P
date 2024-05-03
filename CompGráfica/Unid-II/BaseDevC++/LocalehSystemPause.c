@@ -21,3 +21,10 @@ int main() {
     system("PAUSE");
     return 0;
 }
+
+
+/*
+
+Pode colocar também:
+system("pause");
+*/
