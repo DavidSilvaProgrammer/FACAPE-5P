@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Conversora {
     public static String conversorGrafoDeAresta(int[][] matriz) {
-        List<GrafoAresta> indicesDosUns = achaIndicesDosUns(matriz);
+        List<Aresta> indicesDosUns = achaIndicesDosUns(matriz);
         List<List<String>> matrizDeZeros = geradorMatriz(indicesDosUns);
 
         StringBuilder matrizString = new StringBuilder();
@@ -16,14 +16,14 @@ public class Conversora {
         return matrizString.toString();
     }
 
-    private static List<GrafoAresta> achaIndicesDosUns(int[][] matriz) {
-        List<GrafoAresta> indicesDosUns = new ArrayList<>();
+    private static List<Aresta> achaIndicesDosUns(int[][] matriz) {
+        List<Aresta> indicesDosUns = new ArrayList<>();
         int tamanho = matriz.length;
 
         for (int i = 0; i < tamanho; i++) {
             for (int j = i; j < tamanho; j++) {
                 if (matriz[i][j] == 1) {
-                    GrafoAresta aresta = new GrafoAresta(i, j);
+                    Aresta aresta = new Aresta(i, j);
                     indicesDosUns.add(aresta);
                 }
             }
@@ -32,7 +32,7 @@ public class Conversora {
         return indicesDosUns;
     }
 
-    private static List<List<String>> geradorMatriz(List<GrafoAresta> indicesDosUns) {
+    private static List<List<String>> geradorMatriz(List<Aresta> indicesDosUns) {
         int tamanhoMatriz = indicesDosUns.size() + 1;
 
         List<List<String>> matriz = new ArrayList<>();
