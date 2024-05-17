@@ -99,3 +99,20 @@ public class Main {
         return matriz;
     }
 }
+
+
+/*
+
+Este trecho de código está comparando os últimos quatro caracteres das strings arestaI e arestaJ. Vamos analisar cada parte:
+
+    arestaI.substring(arestaI.length() - 4): Este trecho extrai os últimos quatro caracteres da string arestaI. arestaI.length() retorna o 
+    comprimento total da string arestaI, e substring() é usado para extrair uma parte da string, começando no índice especificado (arestaI.length() - 4) até o final da string.
+
+    .equals(: Este é um método que compara se duas strings são iguais. Ele retorna true se as strings forem iguais e false caso contrário.
+
+    arestaJ.substring(arestaJ.length() - 4): Este trecho faz o mesmo que o primeiro, extrai os últimos quatro caracteres da string arestaJ.
+
+Em resumo, esse if está verificando se os últimos quatro caracteres das strings arestaI e arestaJ são iguais. Isso pode ser útil, por exemplo, se você estiver 
+trabalhando com strings que seguem um padrão e deseja verificar se os últimos quatro caracteres dessas strings são idênticos.
+
+*/
