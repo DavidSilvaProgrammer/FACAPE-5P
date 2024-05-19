@@ -1,0 +1,21 @@
+O comentário apresentado aborda corretamente os motivos pelos quais os ponteiros são usados na função calcularCoordenadas. 
+No entanto, substituir as variáveis de ponteiro por variáveis globais não manteria a mesma funcionalidade e 
+não seria uma prática recomendada. Aqui está o porquê:
+
+  Escopo e modularidade: Usar variáveis globais introduz um acoplamento desnecessário entre diferentes partes 
+  do código. Isso pode tornar o código menos legível e mais difícil de dar manutenção, especialmente em programas maiores.  
+O uso de variáveis locais e parâmetros de função mantém uma clara divisão entre diferentes partes do código e promove a modularidade.
+
+    Segurança e previsibilidade: Variáveis globais podem ser modificadas por qualquer parte do código, o que pode levar a 
+efeitos colaterais indesejados e comportamentos imprevisíveis. Passando variáveis como parâmetros de função, você tem controle 
+sobre quando e como essas variáveis são modificadas, tornando o comportamento do programa mais previsível e menos propenso a erros.
+
+    Reusabilidade: Ao usar variáveis globais, você está limitando a reusabilidade da função. Se você quiser usar a função 
+calcularCoordenadas em um contexto diferente, onde você precisa calcular coordenadas para diferentes parábolas em locais 
+diferentes, você teria que modificar as variáveis globais ou criar versões adicionais da função para lidar com diferentes 
+conjuntos de variáveis globais. Passando variáveis como parâmetros, você pode reutilizar a função em diferentes contextos 
+sem modificar seu código interno.
+
+Em resumo, embora seja tecnicamente possível substituir variáveis de ponteiro por variáveis globais para atingir a mesma 
+funcionalidade, essa abordagem não é recomendada devido a questões de modularidade, segurança e reusabilidade do código. 
+O uso de ponteiros e passagem de parâmetros é uma prática de programação mais limpa e robusta.
