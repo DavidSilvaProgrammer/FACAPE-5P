@@ -10,3 +10,13 @@ Essa linha de código está atribuindo o resultado de uma chamada de método a u
 Portanto, a linha de código está chamando um método chamado achaIndicesDosUns para encontrar os índices 
 de elementos específicos na matriz matriz e armazenando esses índices em uma lista chamada indicesDosUns, 
 onde cada elemento da lista é do tipo Aresta.
+
+Na linha de código List<Aresta> indicesDosUns = achaIndicesDosUns(matriz);, indicesDosUns não está sendo instanciado sem new. 
+Na verdade, indicesDosUns está sendo inicializado com o resultado de uma chamada de método.
+
+O método achaIndicesDosUns(matriz) retorna uma lista do tipo List<Aresta>, e essa lista é então atribuída 
+à variável indicesDosUns.
+
+O método achaIndicesDosUns pode ser uma função ou método de uma classe que retorna uma lista de Arestas. 
+Dentro deste método, é onde a lista está sendo criada e populada com os elementos apropriados. Assim, 
+não é necessário usar new diretamente para instanciar a lista em indicesDosUns.
