@@ -1,0 +1,13 @@
+Na expressão regular, \\s+ representa um ou mais caracteres de espaço em branco, incluindo espaços, tabulações e quebras de linha. 
+
+Quando você usa \\s+ como parâmetro no método split() em Java (ou em muitas outras linguagens que suportam expressões regulares), ele vai dividir a string 
+tanto por espaços em branco na mesma linha quanto por quebras de linha.
+
+Por exemplo, se você tiver a string "1 2\n3 4", onde há um espaço entre "1" e "2" na primeira linha e uma quebra de linha entre "2" e "3", 
+o método split("\\s+") dividirá essa string em um array com os valores ["1", "2", "3", "4"]. 
+Ele considera tanto os espaços quanto as quebras de linha como delimitadores para separar os elementos da string.
+
+
+Se você quiser considerar apenas espaços em branco como delimitadores, use " " (um espaço em branco) como parâmetro do método split(). 
+Por exemplo: split(" ").
+Se você quiser considerar apenas quebras de linha como delimitadores, use "\n" como parâmetro do método split(). Por exemplo: split("\n").
