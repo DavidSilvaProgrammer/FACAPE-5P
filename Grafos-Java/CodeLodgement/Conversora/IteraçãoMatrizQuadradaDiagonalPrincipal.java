@@ -17,6 +17,33 @@ public class Main {
 Índices: (1, 1)
 Índices: (1, 2)
 Índices: (2, 2)
+
+Na verdade, a iteração ocorre conforme esperado, com i começando do valor atual do laço externo e j começando do 
+valor atual do laço interno. Vamos analisar o funcionamento da iteração:
+
+    O loop externo (for (int i = 0; i < tamanho; i++)) começa com i = 0.
+    Dentro do loop externo, há um loop interno (for (int j = i; j < tamanho; j++)), que começa com j igual ao valor atual de i.
+    O loop interno então itera de j até tamanho - 1, imprimindo os índices conforme especificado.
+    Após o término do loop interno, o loop externo faz sua próxima iteração, incrementando i para o próximo valor.
+    O processo se repete para cada iteração do loop externo.
+
+Portanto, j não está modificando antes de i durante a iteração. Cada iteração do loop interno é realizada dentro 
+de uma iteração do loop externo, como esperado.
+
+Aqui está uma representação da iteração para tamanho = 3:
+
+Iteração 1:
+Índices: (0, 0)
+Índices: (0, 1)
+Índices: (0, 2)
+
+Iteração 2:
+Índices: (1, 1)
+Índices: (1, 2)
+
+Iteração 3:
+Índices: (2, 2)
+
 */
 
 public class Main {
