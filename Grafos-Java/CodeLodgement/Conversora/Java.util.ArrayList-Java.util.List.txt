@@ -1,0 +1,37 @@
+java.util.List: List é uma interface em Java que representa uma coleção ordenada de elementos. 
+Uma interface em Java define um conjunto de métodos que uma classe concreta deve implementar se ela implementa 
+essa interface. List define métodos para adicionar, remover, acessar e manipular elementos em uma lista. 
+A interface List é implementada por várias classes em Java, como ArrayList, LinkedList, Vector, entre outras. 
+Portanto, quando você importa java.util.List, você está importando apenas a interface, não uma implementação específica.
+
+java.util.ArrayList: ArrayList é uma classe em Java que implementa a interface List. Ela fornece uma implementação 
+de uma lista baseada em arrays redimensionáveis. ArrayList é uma das implementações mais comuns e usadas da interface 
+List. Ela oferece acesso rápido e eficiente aos elementos por índice, mas pode ser menos eficiente em operações de 
+inserção e remoção em comparação com outras estruturas de dados, como LinkedList. Quando você importa java.util.ArrayList, 
+você está importando a classe específica ArrayList, que pode ser usada para criar e manipular listas dinâmicas em seu código.
+
+Portanto, em resumo, java.util.List é uma interface que define o comportamento geral de uma lista em Java, 
+enquanto java.util.ArrayList é uma classe concreta que implementa essa interface e fornece uma implementação 
+específica de uma lista baseada em arrays.
+
+você pode usar java.util.ArrayList sem explicitamente importar ou referenciar a interface java.util.List. No entanto, é importante 
+entender que ArrayList implementa a interface List.
+
+Quando você usa java.util.ArrayList, você está usando uma implementação específica de uma lista baseada em arrays. 
+Isso significa que você ainda pode usar todos os métodos definidos na interface List com um objeto ArrayList, 
+pois ArrayList implementa todos esses métodos.
+
+Exemplo:
+
+import java.util.ArrayList;
+
+public class ExemploArrayList {
+    public static void main(String[] args) {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(10);
+        arrayList.add(20);
+        System.out.println(arrayList.get(0));  // Saída: 10
+        System.out.println(arrayList.size());  // Saída: 2
+    }
+}
+
