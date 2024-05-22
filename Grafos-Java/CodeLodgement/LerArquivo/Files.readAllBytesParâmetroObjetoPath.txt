@@ -74,3 +74,21 @@ try {
 O e em IOException é uma convenção comum em Java (e em muitas outras linguagens de programação) para o nome de 
 uma variável que representa uma exceção. Nesse contexto, o e é uma referência à exceção que foi lançada.
 
+***************
+
+Se o caminho passado para o método Files.readAllBytes(caminho) estiver vazio ou for nulo, o Java lançará uma exceção NullPointerException. 
+Isso ocorre porque o método Files.readAllBytes() espera que o argumento caminho seja um objeto do tipo Path que represente o caminho 
+para o arquivo que será lido. Se o caminho for nulo ou vazio, não será possível realizar a operação de leitura do arquivo, 
+resultando em uma falha durante a execução do programa.
+
+Para evitar essa exceção, é importante garantir que o caminho fornecido seja válido antes de chamar o método Files.readAllBytes(). 
+Isso pode envolver a verificação de nulidade do caminho ou a validação de que o caminho não está vazio ou vazio. Por exemplo:
+
+if (caminho == null || caminho.isEmpty()) {
+    // Lida com o caso em que o caminho é nulo ou vazio
+    System.err.println("Caminho inválido");
+} else {
+    // Realiza a operação de leitura do arquivo
+    byte[] bytesDoArquivo = Files.readAllBytes(caminho);
+}
+
