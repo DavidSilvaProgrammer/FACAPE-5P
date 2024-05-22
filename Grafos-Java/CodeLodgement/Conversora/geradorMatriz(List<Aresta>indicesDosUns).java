@@ -92,5 +92,22 @@ Portanto, o método geradorMatriz realiza todas as etapas necessárias para cria
   de adjacências que representa o grafo de arestas com base nas informações fornecidas pela lista indicesDosUns.
   */
 
+/*
+linha.add("\t" + indicesDosUns.get(j - 1).getAresta());
 
-  
+  Na linha linha.add("\t" + indicesDosUns.get(j - 1).getAresta());, o índice j - 1 está sendo usado porque a matriz começa com a 
+      representação das arestas a partir da segunda coluna.
+
+Vamos analisar cada parte dessa expressão:
+
+    indicesDosUns.get(j - 1): Aqui, j - 1 é usado para acessar os elementos da lista indicesDosUns. Lembre-se de que os índices 
+      em Java começam em 0, então, se j for 1 (primeira coluna), queremos acessar o primeiro elemento da lista, que está no índice 0. 
+      Se j for 2 (segunda coluna), queremos acessar o segundo elemento da lista, que está no índice 1, e assim por diante.
+
+    .getAresta(): Após acessar o elemento correto da lista indicesDosUns, o método getAresta() é chamado para obter 
+      a representação da aresta correspondente a essa posição.
+
+Portanto, j - 1 é usado para garantir que estejamos acessando os elementos corretos da lista indicesDosUns de acordo com 
+      os índices das colunas da matriz, considerando que os índices da lista começam em 0.
+
+      */
