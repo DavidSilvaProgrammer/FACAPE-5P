@@ -1,0 +1,10 @@
+O método Files.readAllBytes(Path path) espera um argumento do tipo Path, não uma String. Portanto, ao fornecer uma string diretamente, 
+o compilador não saberá como interpretá-la corretamente. Ao criar um objeto Path usando Paths.get(), você está convertendo a string 
+em um tipo que o método readAllBytes() pode entender e usar para localizar o arquivo no sistema de arquivos.
+
+Além disso, o método Paths.get() é útil porque permite criar objetos Path independentes do sistema operacional, o que significa que 
+o código será portátil entre diferentes sistemas operacionais que utilizam diferentes convenções de separador de diretório 
+(por exemplo, "" no Windows e "/" no Unix/Linux).
+
+Portanto, o método Paths.get() é uma forma eficiente e portável de criar objetos Path a partir de strings, permitindo que 
+você os utilize em métodos que operam em arquivos e diretórios.
