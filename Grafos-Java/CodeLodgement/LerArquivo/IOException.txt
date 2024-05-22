@@ -1,0 +1,12 @@
+IOException é uma classe em Java que faz parte do pacote java.io. Ela é usada para lidar com exceções relacionadas a operações de entrada e saída (I/O), 
+como leitura ou gravação de arquivos, manipulação de fluxos de dados, comunicação com dispositivos externos, entre outros.
+
+Quando ocorre um erro durante uma operação de I/O, como falha ao abrir um arquivo, problema de permissões de arquivo, ou interrupção 
+de conexão durante a comunicação de rede, uma exceção IOException é lançada para indicar que algo deu errado. Isso permite que o programa 
+capture e trate o erro de forma adequada, podendo fornecer feedback ao usuário, 
+realizar ações de recuperação ou registrar informações de erro para diagnóstico futuro.
+
+IOException é uma classe de exceção genérica que possui diversas subclasses mais específicas, cada uma representando um tipo 
+diferente de erro de E/S. Alguns exemplos de subclasses de IOException incluem FileNotFoundException, EOFException, SocketException, 
+entre outras. Essas subclasses específicas permitem uma manipulação mais precisa e detalhada dos diferentes tipos de erros de I/O que 
+podem ocorrer em um programa Java.
