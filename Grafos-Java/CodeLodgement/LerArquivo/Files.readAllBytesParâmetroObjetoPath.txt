@@ -16,3 +16,16 @@ Files.readAllBytes() ou Files.readAllLines() para manipular o arquivo de acordo 
 Essa abordagem é necessária porque os métodos da classe Files esperam argumentos do tipo Path, não strings diretamente. 
 A classe Path fornece uma maneira consistente e portável de representar caminhos de arquivos e diretórios, permitindo 
 que seu código seja executado de forma confiável em diferentes sistemas operacionais.
+
+Adequação ao sistema operacional
+
+Quando você cria um objeto Path a partir de uma string usando o método Paths.get(), o Java realiza uma tradução interna 
+desse caminho de arquivo representado como uma string em um formato que seja compreensível para o sistema operacional subjacente.
+
+Por exemplo, se você estiver executando seu código em um sistema operacional Windows e passar uma string como "C:\diretorio\arquivo.txt", 
+o Java irá traduzir essa string internamente para um formato que o sistema operacional Windows entenda. Da mesma forma, 
+se você estiver em um sistema Unix/Linux e passar uma string como "/home/usuario/arquivo.txt", o Java irá traduzir essa string 
+para o formato correspondente ao sistema operacional Unix/Linux.
+
+Essa tradução é necessária para garantir que o sistema operacional possa localizar corretamente o arquivo ou diretório 
+especificado quando o método Files.readAllBytes() ou outros métodos da classe Files forem chamados.
