@@ -11,4 +11,10 @@ System.err.println é usado para imprimir mensagens de erro ou informações de 
 Ao usar System.err.println, a mensagem será exibida na saída de erro padrão, que geralmente é exibida 
 em uma cor diferente ou de forma diferenciada no console, tornando mais fácil distinguir mensagens de 
   erro de mensagens normais de saída.
+
+Esta linha de código imprimirá "Erro: Não foi possível abrir o arquivo!" na saída de erro padrão. 
+Se o programa estiver sendo executado em um ambiente de linha de comando, essa mensagem pode 
+ser exibida em vermelho ou em negrito, dependendo da configuração do terminal, 
+indicando que é uma mensagem de erro.
+
 */
