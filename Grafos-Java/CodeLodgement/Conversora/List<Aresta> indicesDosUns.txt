@@ -17,6 +17,12 @@ Na verdade, indicesDosUns está sendo inicializado com o resultado de uma chamad
 O método achaIndicesDosUns(matriz) retorna uma lista do tipo List<Aresta>, e essa lista é então atribuída 
 à variável indicesDosUns.
 
+public List<Aresta> achaIndicesDosUns(int[][] matriz) {
+    List<Aresta> indicesDosUns = new ArrayList<>();
+    // Código para encontrar os índices dos "uns" na matriz e adicioná-los a indicesDosUns
+    return indicesDosUns;
+}
+
 O método achaIndicesDosUns pode ser uma função ou método de uma classe que retorna uma lista de Arestas. 
 Dentro deste método, é onde a lista está sendo criada e populada com os elementos apropriados. Assim, 
 não é necessário usar new diretamente para instanciar a lista em indicesDosUns.
