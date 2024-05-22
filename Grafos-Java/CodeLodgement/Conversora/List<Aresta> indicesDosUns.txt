@@ -1,0 +1,12 @@
+Essa linha de código está atribuindo o resultado de uma chamada de método a uma variável. Vamos analisar em detalhes:
+
+  List<Aresta>: Isso indica que estamos declarando uma variável chamada indicesDosUns que é do tipo List e que contém objetos do tipo Aresta. 
+  Em Java, List é uma interface que representa uma coleção ordenada de elementos. Aqui, especificamente, estamos dizendo que queremos uma 
+  lista que contenha objetos do tipo Aresta.
+
+  achaIndicesDosUns(matriz): Isso indica que estamos chamando um método chamado achaIndicesDosUns e passando 
+  a variável matriz como argumento para esse método. O resultado retornado por esse método será atribuído à variável indicesDosUns.
+
+Portanto, a linha de código está chamando um método chamado achaIndicesDosUns para encontrar os índices 
+de elementos específicos na matriz matriz e armazenando esses índices em uma lista chamada indicesDosUns, 
+onde cada elemento da lista é do tipo Aresta.
