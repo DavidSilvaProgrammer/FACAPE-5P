@@ -8,3 +8,11 @@ o código será portátil entre diferentes sistemas operacionais que utilizam di
 
 Portanto, o método Paths.get() é uma forma eficiente e portável de criar objetos Path a partir de strings, permitindo que 
 você os utilize em métodos que operam em arquivos e diretórios.
+
+Em outras palavras, se você tiver o endereço de um arquivo ou diretório em formato de string, precisará converter essa string 
+em um objeto do tipo Path usando o método Paths.get(). Depois disso, você pode usar esse objeto Path em métodos como 
+Files.readAllBytes() ou Files.readAllLines() para manipular o arquivo de acordo com suas necessidades.
+
+Essa abordagem é necessária porque os métodos da classe Files esperam argumentos do tipo Path, não strings diretamente. 
+A classe Path fornece uma maneira consistente e portável de representar caminhos de arquivos e diretórios, permitindo 
+que seu código seja executado de forma confiável em diferentes sistemas operacionais.
