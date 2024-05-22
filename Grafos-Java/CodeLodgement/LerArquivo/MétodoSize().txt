@@ -1,0 +1,7 @@
+Se você estiver usando o método size() em um objeto que representa um arquivo de texto, como um objeto ArrayList 
+onde cada linha do arquivo é um elemento da lista, então o método size() 
+retornaria o número de linhas no arquivo, não o número de palavras em cada linha.
+
+Então, se o arquivo de texto tiver três linhas (cada uma com um número diferente de palavras), o método size() 
+retornaria 3, indicando que há três linhas no arquivo. Ele não leva em consideração o número de palavras 
+em cada linha, apenas o número de linhas no arquivo.
