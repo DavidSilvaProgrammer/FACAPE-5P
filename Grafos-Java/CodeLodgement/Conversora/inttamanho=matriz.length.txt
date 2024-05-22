@@ -1,0 +1,10 @@
+int tamanho = matriz.length;
+
+Essa linha de código int tamanho = matriz.length; está obtendo a quantidade de linha da matriz matriz. Em Java, uma matriz é 
+um objeto que armazena uma coleção de elementos de um tipo de dados especificado em uma grade bidimensional.
+
+    matriz.length retorna o número de elementos na primeira dimensão da matriz, que corresponde ao número de linhas da matriz.
+    Portanto, int tamanho está sendo atribuído com o número de linhas da matriz matriz.
+
+Por exemplo, se a matriz tiver 3 linhas e 4 colunas, matriz.length será igual a 3, pois há 3 elementos na primeira dimensão 
+da matriz (ou seja, 3 linhas). Este valor é então atribuído à variável tamanho.
