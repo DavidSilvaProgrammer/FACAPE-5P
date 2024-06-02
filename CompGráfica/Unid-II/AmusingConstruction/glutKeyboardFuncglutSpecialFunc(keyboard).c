@@ -3,6 +3,10 @@
 /*
 Use glutKeyboardFunc para teclas regulares: Para lidar com teclas regulares, 
 como 'a' ou 'A', você deve usar glutKeyboardFunc em vez de glutSpecialFunc
+
+
+glutKeyboardFunc(keyboard); //implementar no main para usar caracteres especial
+glutSpecialFunc(keyboard); //implementar no main para usar teclas comuns
 */
 
 
