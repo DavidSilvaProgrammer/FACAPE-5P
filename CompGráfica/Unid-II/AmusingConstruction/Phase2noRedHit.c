@@ -72,11 +72,12 @@ void drawRedSquare(void) {
 }
 
 void moveRedSquare(void) {
-    
-    
-    // Movimento do quadrado vermelho
-        redSquareX += redSquareSpeedX; // Atualiza a posição X
-        redSquareY += redSquareSpeedY; // Atualiza a posição Y
+    // Fator de redução da velocidade
+    float slowFactor = 0.2; // Ajuste esse valor para controlar a velocidade
+
+    // Movimento do quadrado vermelho com velocidade reduzida
+    redSquareX += redSquareSpeedX * slowFactor; // Atualiza a posição X
+    redSquareY += redSquareSpeedY * slowFactor; // Atualiza a posição Y
 
     // Verifica colisões com as bordas da janela
     if (redSquareX <= 0 || redSquareX + redSquareSize >= screenWidth) {
@@ -86,6 +87,7 @@ void moveRedSquare(void) {
         redSquareSpeedY = -redSquareSpeedY; // Inverte a direção vertical ao atingir a borda
     }
 }
+
 
 
 
@@ -242,6 +244,7 @@ if (callred == 1) {
     gameState = 0; // Retorna à tela inicial
     callred = 0; // Reinicia o contador do quadrado vermelho
     parabens = 1;
+    phaseTextStatus=1;
 }
 
 
