@@ -1,8 +1,17 @@
+//incluir -lopengl32 -lglu32 -lglut32 -lwinmm em "adicionar esses comando à linha
+//de comando do linker" em ferramentas>opções do compilador
+
 #include <GL/glut.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+
+#include <Windows.h>
+#include <mmsystem.h>
+
+#pragma comment(lib, "Winmm.lib")
+
 
 int screenWidth = 800;
 int screenHeight = 500;
@@ -102,6 +111,7 @@ void moveRedSquare(void) {
             if (lives == 0) {
                 // Se sim, retornar à tela inicial e reiniciar as vidas
                 gameState = 0;
+                lives=3;
                 parabens=2;
             } else {
                 // Se não, voltar o quadrado para a posição inicial
@@ -112,6 +122,7 @@ void moveRedSquare(void) {
     
     
 }
+
 
 int main(int argc, char **argv)
 {
