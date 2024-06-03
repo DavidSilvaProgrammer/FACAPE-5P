@@ -108,7 +108,7 @@ void moveRedSquare(void) {
             ghostModeUsed = 0;
 
             // Verificar se o jogador perdeu todas as vidas
-            if (lives <= 0) {
+            if (lives == 0) {
                 // Se sim, retornar à tela inicial e reiniciar as vidas
                 gameState = 0;
                 lives = 3;
@@ -182,6 +182,7 @@ void display(void) {
         squarePosY = 100;
         isGhostMode = 0; // Desativar o modo fantasma na tela inicial
         ghostModeUsed = 0; // Reiniciar o indicador de modo fantasma usado
+       
         // Dentro da função display()
 	if (gameState == 0 && parabens==1) {
     // Exibir a mensagem de vitória na tela inicial
