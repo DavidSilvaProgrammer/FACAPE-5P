@@ -316,6 +316,7 @@ void display(void) {
         phaseTextStatus = 2;
         callred +=1;
         plusghostfasecont=1;
+        parabens=1;
          
     } 
     
