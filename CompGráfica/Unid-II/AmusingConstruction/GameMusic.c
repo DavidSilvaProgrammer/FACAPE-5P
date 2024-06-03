@@ -111,7 +111,6 @@ void moveRedSquare(void) {
             if (lives == 0) {
                 // Se sim, retornar à tela inicial e reiniciar as vidas
                 gameState = 0;
-                lives = 3;
                 parabens=2;
             } else {
                 // Se não, voltar o quadrado para a posição inicial
