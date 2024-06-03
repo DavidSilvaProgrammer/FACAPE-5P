@@ -537,7 +537,7 @@ void drawSquare(void) {
         glEnd();
 
         // Definir a cor do preenchimento do quadrado como cinza claro
-        glColor3f(0.8, 0.8, 0.8); // R, G, B - valores entre 0.0 e 1.0 para tons de cinza claro
+        glColor3f(0.5, 0.6, 0.9); // R, G, B - valores entre 0.0 e 1.0 para tons de cinza claro
 
         // Desenhar o preenchimento do quadrado
         glBegin(GL_POLYGON);
