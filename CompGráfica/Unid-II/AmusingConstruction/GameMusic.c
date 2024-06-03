@@ -466,6 +466,7 @@ void keyboard(int key, int x, int y) {
 void mouse(int button, int state, int x, int y) {
     if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN && gameState == 0) {
         gameState = 1;
+        parabens==1;
         glutPostRedisplay();
     } else if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && gameState == 1 && (!ghostModeUsed ) || (plusghostfase == 1 && plusghostfasecont == 1)){
         // Ativar o modo fantasma quando o botão esquerdo for clicado
