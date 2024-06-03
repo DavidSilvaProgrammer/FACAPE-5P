@@ -99,10 +99,9 @@ void moveRedSquare(void) {
             ghostModeUsed = 0;
 
             // Verificar se o jogador perdeu todas as vidas
-            if (lives <= 0) {
+            if (lives == 0) {
                 // Se sim, retornar à tela inicial e reiniciar as vidas
                 gameState = 0;
-                lives = 3;
                 parabens=2;
             } else {
                 // Se não, voltar o quadrado para a posição inicial
@@ -113,10 +112,6 @@ void moveRedSquare(void) {
     
     
 }
-
-
-
-
 
 int main(int argc, char **argv)
 {
@@ -156,6 +151,7 @@ void display(void) {
         squarePosY = 100;
         isGhostMode = 0; // Desativar o modo fantasma na tela inicial
         ghostModeUsed = 0; // Reiniciar o indicador de modo fantasma usado
+       
         // Dentro da função display()
 	if (gameState == 0 && parabens==1) {
     // Exibir a mensagem de vitória na tela inicial
@@ -440,6 +436,7 @@ void keyboard(int key, int x, int y) {
 void mouse(int button, int state, int x, int y) {
     if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN && gameState == 0) {
         gameState = 1;
+        parabens==1;
         glutPostRedisplay();
     } else if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && gameState == 1 && (!ghostModeUsed ) || (plusghostfase == 1 && plusghostfasecont == 1)){
         // Ativar o modo fantasma quando o botão esquerdo for clicado
@@ -511,7 +508,7 @@ void drawSquare(void) {
         glEnd();
 
         // Definir a cor do preenchimento do quadrado como cinza claro
-        glColor3f(0.8, 0.8, 0.8); // R, G, B - valores entre 0.0 e 1.0 para tons de cinza claro
+        glColor3f(0.5, 0.6, 0.9); // R, G, B - valores entre 0.0 e 1.0 para tons de cinza claro
 
         // Desenhar o preenchimento do quadrado
         glBegin(GL_POLYGON);
