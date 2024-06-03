@@ -27,3 +27,6 @@ int main() {
 
     return 0;
 }
+
+//incluir -lopengl32 -lglu32 -lglut32 -lwinmm em "adicionar esses comando à linha
+//de comando do linker" em ferramentas>opções do compilador
